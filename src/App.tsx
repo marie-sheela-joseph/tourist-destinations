@@ -15,9 +15,12 @@ interface ITouristDestinations {
 
 function App() {
   const [touristDestinations,setTouristDestinations]=useState<ITouristDestinations["touristDestinations"]>(initialState);
+  function deleteTouristDestination(id:number){
+    setTouristDestinations((prevState)=>prevState.filter((t)=>t.id!==id))
+  }
   return (
     <div>      
-      <Display touristDestinations={touristDestinations}/>
+      <Display touristDestinations={touristDestinations} deleteTouristDestination={deleteTouristDestination}/>
     </div>
   );
 }
