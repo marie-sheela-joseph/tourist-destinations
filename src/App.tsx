@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Add from './Add';
 import './App.css';
 import Display from './Display';
 
@@ -18,8 +19,12 @@ function App() {
   function deleteTouristDestination(id:number){
     setTouristDestinations((prevState)=>prevState.filter((t)=>t.id!==id))
   }
+  function addTouristDestination(newTouristDestination:{name:string,country:string}):void{    
+    setTouristDestinations((prevState)=>{return [...prevState,{...newTouristDestination, id:prevState.length+1}]})
+  }
   return (
     <div>      
+      <Add addTouristDestination={addTouristDestination}/>
       <Display touristDestinations={touristDestinations} deleteTouristDestination={deleteTouristDestination}/>
     </div>
   );
