@@ -1,16 +1,19 @@
-interface ITouristDestinations {
+interface IDisplay {
     touristDestinations:{  id: number;
       name: string;
-      country: string;}[]    
+      country: string;}[],
+      deleteTouristDestination:(id:number)=>void
     };
 
-const Display:React.FC<ITouristDestinations>=({touristDestinations}):JSX.Element=>{
+const Display:React.FC<IDisplay>=({touristDestinations,deleteTouristDestination}):JSX.Element=>{
        
     return (
         <div>
             <ol>
                 {touristDestinations.map((t)=><li>
-                    {t.name} in {t.country}</li>)}
+                    {t.name} in {t.country}
+                    <button onClick={()=>deleteTouristDestination(t.id)}>Delete</button>
+                    </li>)}
             </ol>
         </div>
     )
