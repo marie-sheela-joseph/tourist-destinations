@@ -38,7 +38,8 @@ function App() {
     return touristDestinations.find((t)=>t.id===editId)!
   }
   return (
-    <div>      
+    <div> 
+      <h1>Tourist Destinations</h1>     
       <Add addTouristDestination={addTouristDestination}/>
       {showEdit && <Edit touristDestination={findTouristDestination()} editTouristDestination={editTouristDestination}/>}
       <Display touristDestinations={touristDestinations} deleteTouristDestination={deleteTouristDestination} setShowEdit={setShowEdit} setEditId={setEditId}/>
